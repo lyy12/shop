@@ -1,0 +1,45 @@
+参见博客：https://my.oschina.net/architectliuyuanyuan/blog/3082860
+
+zookeeper的默认端口号为2181
+
+dubbo的监控中心使用
+dubbo本身并不是一个服务软件。它其实就是一个jar包能够帮你的java程序连接到zookeeper，并利用zookeeper消费、提供服务。所以你不用在Linux上启动什么dubbo服务。
+但是为了让用户更好的管理监控众多的dubbo服务，官方提供了一个可视化的监控程序，不过这个监控即使不装也不影响使用。
+2.1安装监控软件：
+配置：  tomcat8 + dubbo-admin.war + jdk1.8
+dubbo-admin.war 是一个动态web项目
+拷贝tomcat8和dubbo-admin.war到/opt目录下
+
+然后把dubbo-admin-2.6.0.war拷贝到tomcat的webapps
+
+进入tomcat的目录/bin
+
+启动./startup.sh
+
+关闭防火墙：centos7来说：查看防火墙状态
+
+                firewall-cmd    --state
+
+                关闭防火墙
+
+                systemctl  stop   firewalld.service
+
+                开启防火墙
+
+                systemctl  start   firewalld.service
+
+                禁止开机启动启动防火墙
+
+                systemctl   disable   firewalld.service
+
+
+然后在本地启动 http://192.168.19.129:8080/dubbo-admin-2.6.0
+
+登录，默认账号密码为：root，root
+
+Dubbo.properties.配置文件中写明了，密码是什么以及注册中心的地址！
+(修改的话，可以去)
+
+
+打开这个界面就说明，dubbo的监控服务已经启动。但是现在咱们还没有搭建dubbo的提供端和消费端。具体的搭建也就是引入pom依赖，然后做配置
+加注解
