@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
         Example example = new Example(UserInfo.class);
         example.createCriteria().andEqualTo("name",name);
-
+        //通过条件进行更新的方法
         userMapper.updateByExampleSelective(userInfo,example);
 
     }
