@@ -33,4 +33,10 @@ gmall-util-web这个服务提供了和
 
 数据库设计模型见数据库模型.dmx
 
+订单服务调用后台服务需要启动
+1.gmall-order-web
+2.gmall-user-manage
+
+后期见博客：https://my.oschina.net/architectliuyuanyuan
+
 
