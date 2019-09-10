@@ -27,6 +27,21 @@ public class ManageServiceImpl implements ManageService {
     @Autowired
     BaseAttrValueMapper baseAttrValueMapper;
 
+    @Autowired
+    SpuInfoMapper spuInfoMapper;
+
+    @Autowired
+    BaseSaleAttrMapper baseSaleAttrMapper;
+
+    @Autowired
+    SpuImageMapper spuImageMapper;
+
+    @Autowired
+    SpuSaleAttrMapper spuSaleAttrMapper;
+
+    @Autowired
+    SpuSaleAttrValueMapper spuSaleAttrValueMapper;
+
     //查询所有的一级分类列表
     @Override
     public List<BaseCatalog1> getCatalog1List() {
@@ -107,5 +122,59 @@ public class ManageServiceImpl implements ManageService {
         //查出来的结果封装进这个对象，将该对象返回
         baseAttrInfo.setAttrValueList(baseAttrValueList);
         return baseAttrInfo;
+    }
+
+    @Override
+    public List<SpuInfo> getSpuList(String catalog3Id) {
+        //查的时候需要用的是spuInfo的对象
+        //spuInfo的对象里面放了三级分类的id，就可以根据三级分类id查spuInfo列表了
+        SpuInfo spuInfo = new SpuInfo();
+        spuInfo.setCatalog3Id(catalog3Id);
+        return spuInfoMapper.select(spuInfo);
+    }
+
+    @Override
+    public List<BaseSaleAttr> getBaseSaleAttrList() {
+        return baseSaleAttrMapper.selectAll();
+    }
+    //保存spu信息
+    @Override
+    public void saveSpuInfo(SpuInfo spuInfo) {
+        //spu基本信息
+        spuInfoMapper.insertSelective(spuInfo);
+        // 图片信息
+        List<SpuImage> spuImageList = spuInfo.getSpuImageList();
+        for (SpuImage spuImage : spuImageList) {
+            spuImage.setSpuId(spuInfo.getId());
+            spuImageMapper.insertSelective(spuImage);
+        }
+
+        // 销售属性
+        List<SpuSaleAttr> spuSaleAttrList = spuInfo.getSpuSaleAttrList();
+        for (SpuSaleAttr spuSaleAttr : spuSaleAttrList) {
+            spuSaleAttr.setSpuId(spuInfo.getId());
+            spuSaleAttrMapper.insertSelective(spuSaleAttr);
+
+            // 销售属性值
+            List<SpuSaleAttrValue> spuSaleAttrValueList = spuSaleAttr.getSpuSaleAttrValueList();
+            for (SpuSaleAttrValue spuSaleAttrValue : spuSaleAttrValueList) {
+                spuSaleAttrValue.setSpuId(spuInfo.getId());
+                spuSaleAttrValueMapper.insertSelective(spuSaleAttrValue);
+            }
+
+        }
+
+    }
+
+    //根据spuid查询图片列表
+    @Override
+    public List<SpuImage> getSpuImageList(String spuId) {
+        return null;
+    }
+
+    //根据spuid查询销售属性
+    @Override
+    public List<SpuSaleAttr> getSpuSaleAttrList(String spuId) {
+        return null;
     }
 }

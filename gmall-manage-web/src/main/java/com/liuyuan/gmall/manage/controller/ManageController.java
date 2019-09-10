@@ -56,4 +56,36 @@ public class ManageController {
         return attrValueList;
 
     }
+    //根据三级分类获取所有的spu列表，在存spuInfo的时候，就要指定spuInfo隶属于某个三级分类
+    @GetMapping("spuList")
+    public List<SpuInfo> getSpuList(String catalog3Id){
+        return manageService.getSpuList(catalog3Id);
+    }
+
+    //获取销售属性列表
+    @PostMapping("baseSaleAttrList")
+    public List<BaseSaleAttr> getBaseSaleAttrList(){
+        return manageService.getBaseSaleAttrList();
+    }
+
+    //保存spu信息
+    @PostMapping("saveSpuInfo")
+    public String saveSpuInfo(@RequestBody SpuInfo spuInfo){
+        manageService.saveSpuInfo(spuInfo);
+        return "success";
+    }
+
+    //根据spuid查询图片列表
+    @GetMapping("spuImageList")
+    public List<SpuImage> getSpuImageList(String spuId){
+        return manageService.getSpuImageList(spuId);
+
+    }
+
+    //根据spuid查询销售属性
+    @GetMapping("spuSaleAttrList")
+    public  List<SpuSaleAttr> getSpuSaleAttrList(String spuId){
+        return  manageService.getSpuSaleAttrList(spuId);
+    }
+
 }

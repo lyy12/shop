@@ -46,4 +46,39 @@ gmall-manage-service这个服务是商品后台管理的业务层代码
 
 
 
+多个sku组成了spu，
+spu上有描述商品的通用图片
+sku上又有描述商品的特定的图片
+SKU与SPU的图片资源
+另外同一个SPU下的SKU可以共用一些资源，比如商品图片，海报等等。毕竟
+同一种商品，大部分图片都是共用的只有因为颜色尺寸等，很少的差别。那么
+一般来说商品图片都是在新增SPU时上传的，在新增SKU时从该SPU已上传的图片
+中选择。而海报几乎是所有SPU下的SKU都一样。
+
+
+点击某一个sku，那么会有不同的销售属性和销售属性值让选
+
+当选中某个三级分类后，会加载对应的平台属性和spu，spu下面是所有的sku的
+集合。
+
+三级分类下面有平台属性和一些spu
+这时候在添加spu信息(spuInfo)时候就会报三级分类给传过去
+spuInfo下面又有又有
+商品spu名称 spuName;
+商品描述信息：private String description;
+三级分类(catalog3Id)，
+图片列表:
+(private List<SpuImage> spuImageList;)，
+销售属性值列表:
+(private  List<SpuSaleAttr> spuSaleAttrList;)
+销售属性列表下面又有销售属性值列表:
+(List<SpuSaleAttrValue> spuSaleAttrValueList;)
+
+
+基本销售属性？干嘛用的，只有一个id，name
+
+
+
+
+
 
