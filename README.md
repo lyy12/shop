@@ -29,6 +29,11 @@ gmall-util-service这个服务提供了
 gmall-util-web这个服务提供了和
 前端交互的工具类，依赖于gmall-util-common这个服务
 
+
+gmall-manage-web这个服务是商品后台的控制层
+gmall-manage-service这个服务是商品后台管理的业务层代码
+商品后台的bean和interface分别在gmall-bean和gmall-interface里面
+
 数据库：gmall.sql
 
 数据库设计模型见数据库模型.dmx
@@ -38,5 +43,7 @@ gmall-util-web这个服务提供了和
 2.gmall-user-manage
 
 后期见博客：https://my.oschina.net/architectliuyuanyuan
+
+
 
 
