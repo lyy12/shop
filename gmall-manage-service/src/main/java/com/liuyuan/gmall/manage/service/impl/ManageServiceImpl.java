@@ -74,12 +74,17 @@ public class ManageServiceImpl implements ManageService {
         baseAttrInfo.setCatalog3Id(catalog3Id);
         return baseAttrInfoMapper.select(baseAttrInfo);*/
        //写法二
-        Example example = new Example(BaseAttrInfo.class);
+        /*Example example = new Example(BaseAttrInfo.class);
         example.createCriteria().andEqualTo("catalog3Id",catalog3Id);
         List<BaseAttrInfo> baseAttrInfoList = baseAttrInfoMapper.selectByExample(example);
         //查的时候需要用的是平台属性信息的对象
         //平台属性信息的对象里面放三级分类的id，就可以根据三级分类id查平台属性信息了
-        return baseAttrInfoList;
+        return baseAttrInfoList;*/
+        //做到通用，spu信息里面需要属性名合数性质列表，在对应的baseAttrInfoMapper里面查的时候做了关联查询
+        List<BaseAttrInfo> baseAttrList = baseAttrInfoMapper.getBaseAttrInfoListByCatalog3Id(catalog3Id);
+
+
+        return baseAttrList;
     }
 
     @Override
