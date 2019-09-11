@@ -37,4 +37,6 @@ public interface ManageService {
 
     //根据spuid查询销售属性
     public List<SpuSaleAttr> getSpuSaleAttrList(String spuId);
+    //保存sku信息
+    public void saveSkuInfo(SkuInfo skuInfo);
 }

@@ -80,5 +80,6 @@ spuInfo下面又有又有
 
 
 
-
-
+碰到一个很坑的问题，土坯阿年在不了，用的vue，vue生产环境默认走的是
+localhost：8888，在前端页面配置上加上http//
+<img :src="'http://'+scope.row.imgUrl" :alt="scope.row.imgName" width="178">

@@ -5,6 +5,7 @@ import com.liuyuan.gmall.bean.*;
 import com.liuyuan.gmall.manage.mapper.*;
 import com.liuyuan.gmall.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -41,6 +42,18 @@ public class ManageServiceImpl implements ManageService {
 
     @Autowired
     SpuSaleAttrValueMapper spuSaleAttrValueMapper;
+
+    @Autowired
+    SkuAttrValueMapper skuAttrValueMapper;
+
+    @Autowired
+    SkuImageMapper skuImageMapper;
+
+    @Autowired
+    SkuInfoMapper skuInfoMapper;
+
+    @Autowired
+    SkuSaleAttrValueMapper skuSaleAttrValueMapper;
 
     //查询所有的一级分类列表
     @Override
@@ -174,12 +187,61 @@ public class ManageServiceImpl implements ManageService {
     //根据spuid查询图片列表
     @Override
     public List<SpuImage> getSpuImageList(String spuId) {
-        return null;
+        SpuImage spuImage = new SpuImage();
+        spuImage.setSpuId(spuId);
+        return spuImageMapper.select(spuImage);
     }
 
     //根据spuid查询销售属性
     @Override
     public List<SpuSaleAttr> getSpuSaleAttrList(String spuId) {
-        return null;
+        return spuSaleAttrMapper.getSpuSaleAttrListBySpuId(spuId);
     }
+
+    //保存sku信息
+    @Override
+    @Transactional
+    public void saveSkuInfo(SkuInfo skuInfo) {
+        //保存 1 基本信息
+        if(skuInfo.getId()==null ||skuInfo.getId().length()==0) {
+            skuInfoMapper.insertSelective(skuInfo);
+        }else{
+            skuInfoMapper.updateByPrimaryKeySelective (skuInfo);
+        }
+        //2 平台属性
+        SkuAttrValue skuAttrValue = new SkuAttrValue();
+        skuAttrValue.setSkuId(skuInfo.getId());
+        skuAttrValueMapper.delete(skuAttrValue);
+
+        List<SkuAttrValue> skuAttrValueList = skuInfo.getSkuAttrValueList();
+        for (SkuAttrValue attrValue : skuAttrValueList) {
+            attrValue.setSkuId(skuInfo.getId());
+            skuAttrValueMapper.insertSelective(attrValue);
+        }
+
+
+        //3 销售属性
+        SkuSaleAttrValue skuSaleAttrValue =new SkuSaleAttrValue();
+        skuSaleAttrValue.setSkuId(skuInfo.getId());
+        skuSaleAttrValueMapper.delete(skuSaleAttrValue);
+        List<SkuSaleAttrValue> skuSaleAttrValueList = skuInfo.getSkuSaleAttrValueList();
+        for (SkuSaleAttrValue saleAttrValue : skuSaleAttrValueList) {
+            saleAttrValue.setSkuId(skuInfo.getId());
+            skuSaleAttrValueMapper.insertSelective(saleAttrValue);
+
+        }
+        //4 图片
+        SkuImage skuImage4Del =new SkuImage();
+        skuImage4Del.setId(skuInfo.getId());
+        skuImageMapper.delete(skuImage4Del);
+
+        for (SkuImage skuImage : skuInfo.getSkuImageList()) {
+            skuImage.setSkuId(skuInfo.getId());
+            skuImageMapper.insertSelective(skuImage);
+        }
+
+
+    }
+
+
 }

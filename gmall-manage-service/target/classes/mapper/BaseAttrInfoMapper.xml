@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.liuyuan.gmall.manage.mapper.BaseAttrInfoMapper">
+    <!--//根据三级分类查询出下面对应的属性和属性值列表 -->
     <select id="getBaseAttrInfoListByCatalog3Id" resultMap="baseAttrList">
         SELECT
         bi.id,attr_name,catalog3_id,bv.id attr_vaule_id, bv.value_name
@@ -19,4 +20,6 @@
         </collection>
 
     </resultMap>
+
+
 </mapper>
