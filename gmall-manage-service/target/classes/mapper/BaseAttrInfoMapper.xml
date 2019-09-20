@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.liuyuan.gmall.manage.mapper.BaseAttrInfoMapper">
-    <!--//根据三级分类查询出下面对应的属性和属性值列表 -->
-    <select id="getBaseAttrInfoListByCatalog3Id" resultMap="baseAttrList">
-        SELECT
-        bi.id,attr_name,catalog3_id,bv.id attr_vaule_id, bv.value_name
-        FROM `base_attr_info`  bi INNER JOIN `base_attr_value`  bv
-        ON bi.id=bv.attr_id
-        WHERE bi.catalog3_id=#{catalog3Id}
-    </select>
-    <resultMap id="baseAttrList" type="com.liuyuan.gmall.bean.BaseAttrInfo"  >
-        <result property="id" column="id"></result>
-        <result property="attrName" column="attr_name"></result>
-        <result property="catalog3Id" column="catalog3_id"></result>
-        <collection property="attrValueList" ofType="com.liuyuan.gmall.bean.BaseAttrValue">
-            <result property="id" column="attr_vaule_id"></result>
-            <result property="valueName" column="value_name"></result>
-            <result property="attrId" column="id"></result>
+    <resultMap id="baseAttrInfoMap" type="com.liuyuan.gmall.bean.BaseAttrInfo" autoMapping="true">
+        <id property="id" column="id"></id>
+
+        <collection property="attrValueList" ofType="com.liuyuan.gmall.bean.BaseAttrValue" autoMapping="true">
+            <id property="id" column="attr_value_id"></id>
         </collection>
-
     </resultMap>
+    <select id="getBaseAttrInfoListByCatalog3Id" resultMap="baseAttrInfoMap">
+         SELECT
+               bai.id,
+               bai.attr_name,
+               bai.catalog3_id,
+               bav.id attr_value_id,
+               bav.value_name,
+               bav.attr_id
+            FROM
+               base_attr_info bai
+            INNER JOIN base_attr_value bav ON bai.id = bav.attr_id
+            WHERE
+               catalog3_id = #{0}
+    </select>
 
+    <!--$ :拼接字符串-->
+    <select id="selectAttrInfoListByIds" resultMap="baseAttrInfoMap">
+        SELECT ai.id,ai.attr_name,ai.catalog3_id, av.id attr_value_id ,av.attr_id ,av.value_name
+        FROM base_attr_info ai INNER JOIN base_attr_value av ON ai.id=av.attr_id
+        WHERE av.id IN (${valueIds})
+
+
+    </select>
 
 </mapper>

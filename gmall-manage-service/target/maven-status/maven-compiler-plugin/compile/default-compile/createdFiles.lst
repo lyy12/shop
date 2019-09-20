@@ -1,0 +1,16 @@
+com\liuyuan\gmall\manage\mapper\BaseCatalog2Mapper.class
+com\liuyuan\gmall\manage\mapper\SpuImageMapper.class
+com\liuyuan\gmall\manage\mapper\BaseAttrValueMapper.class
+com\liuyuan\gmall\manage\mapper\BaseCatalog1Mapper.class
+com\liuyuan\gmall\manage\mapper\BaseCatalog3Mapper.class
+com\liuyuan\gmall\manage\mapper\SpuInfoMapper.class
+com\liuyuan\gmall\manage\mapper\SkuSaleAttrValueMapper.class
+com\liuyuan\gmall\manage\mapper\SkuInfoMapper.class
+com\liuyuan\gmall\manage\mapper\BaseAttrInfoMapper.class
+com\liuyuan\gmall\manage\mapper\SkuImageMapper.class
+com\liuyuan\gmall\manage\mapper\SpuSaleAttrMapper.class
+com\liuyuan\gmall\manage\mapper\SpuSaleAttrValueMapper.class
+com\liuyuan\gmall\manage\mapper\BaseSaleAttrMapper.class
+com\liuyuan\gmall\manage\service\impl\ManageServiceImpl.class
+com\liuyuan\gmall\GmallManageServiceApplication.class
+com\liuyuan\gmall\manage\mapper\SkuAttrValueMapper.class
