@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
 @CrossOrigin
 @RestController
 public class SkuController {
@@ -21,4 +22,4 @@ public class SkuController {
         return  "success";
     }
 
-}
+}*/
