@@ -6,23 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="gmall-order-web" />
         <module name="gmall-list-service" />
-        <module name="gmall-item-web" />
         <module name="gmall-bean" />
+        <module name="gmall-order-service" />
         <module name="gmall-manage-web" />
-        <module name="gmall-manage-service" />
+        <module name="gware-manage" />
         <module name="gmall-user-manage" />
         <module name="gmall-cart-service" />
         <module name="gmall-list-web" />
-        <module name="gmall-order-web" />
+        <module name="gmall-manage-service" />
+        <module name="gmall-util-service" />
         <module name="gmall-util-common" />
         <module name="gmall-util-web" />
         <module name="gmall-payment" />
-        <module name="gmall-cart-web" />
         <module name="gmall-passport-web" />
-        <module name="gmall-order-service" />
+        <module name="gmall-cart-web" />
         <module name="gmall-interface" />
-        <module name="gmall-util-service" />
+        <module name="gmall-item-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -38,7 +39,7 @@
       <module name="gmall-manage-web" target="1.7" />
       <module name="gmall-manager-web" target="1.7" />
       <module name="gmall-order-service" target="1.7" />
-      <module name="gmall-order-web" target="1.7" />
+      <module name="gmall-order-web" target="8" />
       <module name="gmall-parent" target="1.7" />
       <module name="gmall-passport-web" target="1.7" />
       <module name="gmall-payment" target="1.7" />
@@ -49,6 +50,7 @@
       <module name="gmall-util-web" target="1.7" />
       <module name="gmall-web-util" target="1.7" />
       <module name="gmall0401-util-service" target="1.7" />
+      <module name="gware-manage" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

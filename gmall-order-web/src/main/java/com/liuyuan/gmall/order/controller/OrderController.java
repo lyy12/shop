@@ -1,15 +1,15 @@
 package com.liuyuan.gmall.order.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.atguigu.gmall0401.bean.*;
-import com.atguigu.gmall0401.config.LoginRequire;
-import com.atguigu.gmall0401.enums.OrderStatus;
-import com.atguigu.gmall0401.enums.ProcessStatus;
-import com.atguigu.gmall0401.service.CartService;
-import com.atguigu.gmall0401.service.ManageService;
-import com.atguigu.gmall0401.service.OrderService;
-import com.atguigu.gmall0401.service.UserService;
-import com.atguigu.gmall0401.util.HttpClientUtil;
+import com.liuyuan.gmall.bean.*;
+import com.liuyuan.gmall.bean.enums.OrderStatus;
+import com.liuyuan.gmall.bean.enums.ProcessStatus;
+import com.liuyuan.gmall.config.LoginRequire;
+import com.liuyuan.gmall.service.CartService;
+import com.liuyuan.gmall.service.ManageService;
+import com.liuyuan.gmall.service.OrderService;
+import com.liuyuan.gmall.service.UserService;
+import com.liuyuan.gmall.util.HttpClientUtil;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 import org.springframework.stereotype.Controller;
@@ -67,7 +67,7 @@ public class OrderController {
 
     @PostMapping("submitOrder")
     @LoginRequire
-    public String submitOrder(OrderInfo orderInfo,HttpServletRequest request){
+    public String submitOrder(OrderInfo orderInfo, HttpServletRequest request){
         String userId = (String) request.getAttribute("userId");
 
         String tradeNo = request.getParameter("tradeNo");

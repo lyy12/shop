@@ -65,18 +65,18 @@ public class PassportController {
         Map<String, Object> map = new HashMap<>();
         map.put("userId","123");
         map.put("nickName","zhang3");
-        String token = JwtUtil.encode("atguigu", map, "192.168.11.120");
+        String token = JwtUtil.encode("liuyuan", map, "192.168.19.129");
         System.out.println(token);
-        Map<String, Object> map1 = JwtUtil.decode(token, "atguigu", "192.168.11.120");
+        Map<String, Object> map1 = JwtUtil.decode(token, "liuyuan", "192.168.19.129");
 
         System.out.println(map1);
     }
     // http://passport.gmall.com/verify?token=xxxx&currentIP=xxxx
     @GetMapping("verify")
     @ResponseBody
-    public  String verify(@RequestParam("token") String token, @RequestParam("currentIP") String currentIp){
+    public  String verify(@RequestParam("token") String token, @RequestParam("salt") String salt){
         //1 验证token
-        Map<String, Object> userMap = JwtUtil.decode(token, jwtKey, currentIp);
+        Map<String, Object> userMap = JwtUtil.decode(token, jwtKey, salt);
 
         //2 验证缓存
         if(userMap!=null){

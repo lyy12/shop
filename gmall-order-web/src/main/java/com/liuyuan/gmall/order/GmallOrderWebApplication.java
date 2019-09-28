@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.atguigu.gmall0401")
+@ComponentScan(basePackages = "com.liuyuan.gmall")
 public class GmallOrderWebApplication {
 
     public static void main(String[] args) {

@@ -20,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/gmall-util-common/gmall-util-common.iml" filepath="$PROJECT_DIR$/gmall-util-common/gmall-util-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/gmall-util-service/gmall-util-service.iml" filepath="$PROJECT_DIR$/gmall-util-service/gmall-util-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/gmall-util-web/gmall-util-web.iml" filepath="$PROJECT_DIR$/gmall-util-web/gmall-util-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gware-manage/gware-manage.iml" filepath="$PROJECT_DIR$/gware-manage/gware-manage.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop.iml" filepath="$PROJECT_DIR$/shop.iml" />
     </modules>
   </component>

@@ -1,6 +1,6 @@
 package com.liuyuan.gmall.order.bean;
 
-import com.atguigu.gmall0401.bean.OrderDetail;
+import com.liuyuan.gmall.bean.OrderDetail;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
