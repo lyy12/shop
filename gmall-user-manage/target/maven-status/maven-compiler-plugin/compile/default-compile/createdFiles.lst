@@ -1,0 +1,4 @@
+com\liuyuan\gmall\user\mapper\UserMapper.class
+com\liuyuan\gmall\user\service\impl\UserServiceImpl.class
+com\liuyuan\gmall\user\controller\UserController.class
+com\liuyuan\gmall\user\GmallUserManageApplication.class

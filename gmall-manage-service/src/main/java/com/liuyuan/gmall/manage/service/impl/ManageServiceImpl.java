@@ -299,7 +299,7 @@ public class ManageServiceImpl implements ManageService {
         // ctrl+alt+t
         try {
             Config config = new Config();
-            config.useSingleServer().setAddress("redis://192.168.67.219:6379");
+            config.useSingleServer().setAddress("redis://192.168.19.129:6379");
 
             RedissonClient redissonClient = Redisson.create(config);
 //        RedissonClient redissonClient = Redisson.create(new Config().useSingleServer().setAddress("redis://192.168.67.219:6379"));

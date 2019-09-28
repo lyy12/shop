@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 //平台属性值表
 @Data
@@ -19,4 +20,8 @@ public class BaseAttrValue implements Serializable {
     //这个平台属性值所属，属于那个平台属性
     @Column
     private String attrId;
+
+    // 声明一个变量
+    @Transient
+    private String urlParam;
 }
